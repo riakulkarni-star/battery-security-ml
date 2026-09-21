@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Header, HTTPException
 import joblib
+import os
 import numpy as np
 
 app = FastAPI(title="Battery Management ML API")
@@ -7,7 +8,7 @@ app = FastAPI(title="Battery Management ML API")
 MODEL_FILE = "models/battery_thermal_model.pkl"
 
 # Demo API key for security testing
-API_KEY = "BMS-SECURE-2026"
+API_KEY = os.getenv("BMS_API_KEY")
 
 model = joblib.load(MODEL_FILE)
 
